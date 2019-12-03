@@ -65,6 +65,20 @@ class GraphAL:
 
         return reachable_vertices
 
+    def is_isolated(self, v):
+        if not self.is_valid_vertex(v):
+            return False
+
+        if len(self.al[v]) != 0:
+            return False
+
+        for lst in self.al:
+            for edge in lst:
+                if edge.dest == v:
+                    return False
+
+        return True
+
     def display(self):
         for i in range(len(self.al)):
             print(i, ': [', end='')
